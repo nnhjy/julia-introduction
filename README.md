@@ -13,22 +13,22 @@ Participants are expected to have some experience in computer programming and to
 
 
 ## Timetable
-|       |        | Monday         |  Tueday 
-| ----- |--------| -------------- | ----------- 
-| 09:00 | 45min  | Intro          |  Development practices 
+|       |        | Monday         |  Tuesday
+| ----- |--------| -------------- | -----------
+| 09:00 | 45min  | Intro          |  Development practices
 | 09:45 | 45min  | **Exercises**  |  **Exercises**          
 | 10:30 | 15min  | Coffee break   |  Coffee break          
-| 10:45 | 30min  | Control flow   |  Julia ecosystem 
+| 10:45 | 30min  | Control flow   |  Julia ecosystem
 | 11:15 | 60min  | **Exercises**  |  **Exercises**   
 | 12:15 | 60min  | *Lunch*        |  *Lunch*
-| 13:15 | 30min  | Functions      |  Performance tips 
+| 13:15 | 30min  | Functions      |  Performance tips
 | 13:45 | 45min  | **Exercises**  |  **Exercises**
-| 14:30 | 15min  | Coffee break   |  Coffee break 
+| 14:30 | 15min  | Coffee break   |  Coffee break
 | 14:45 | 30min  | IO             |  Julia ecosystem II
-| 15:15 | 60min  | **Exercises**  |  End of course 
+| 15:15 | 60min  | **Exercises**  |  End of course
 | 16:15 |        | End of day     |  
 
- 
+
 
 ## Lecture material usage
 Lecture material can be read directly from GitHub  using your browser. Just click yourself inside the `notebooks` directory. However, for best experience, you should open the notebooks in the notebook environment. Installation of `Jupyter` notebooks and IJulia for this is described below.
@@ -38,6 +38,7 @@ For a quick introduction to the Jupyter notebook environment, see the [00_notebo
 
 ## Installation of Julia
 
+<!--
 ### CSC notebook environment
 In the course we use the [CSC notebook environment](https://notebooks.csc.fi/).
 
@@ -45,7 +46,7 @@ Once logged in, go to "Account" and "Join Group" by using the code provided to y
 
 After joining the group, you should see "Introduction to Julia" in the Dashboard.
 
-All the hands-on exercises can be done in the cloud environment using the workstations in the training class (or using own laptop if you prefer so). 
+All the hands-on exercises can be done in the cloud environment using the workstations in the training class (or using own laptop if you prefer so).
 
 
 ### Quick start: using Julia on juliabox
@@ -62,8 +63,9 @@ and type `master` for the branch. Folder name can be whatever you like, for exam
 **Caveat**:
 Packages can not be installed using the Julia package manager. You must install external packages by clicking the `Packages` button on the top menu. After that, just type the name of the package and hit install.
 
+-->
 
-### Installing Julia and IJulia 
+### Installing Julia and IJulia
 If you use Julia enough, you'll eventually want to install it on your own computer. Your code will run faster and won't require a network connection, but can still use the same browser-based notebook interface.
 
 First, [download the current release of Julia](http://julialang.org/downloads/) and run the installer. Then open the Julia application (double-click on it); a window with a julia> prompt will appear. At the prompt, type:
@@ -85,7 +87,6 @@ Then you can launch the notebook in your browser by running
 using IJulia
 notebook()
 ```
-
 
 ----
 ## References
