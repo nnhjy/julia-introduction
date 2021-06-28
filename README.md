@@ -85,7 +85,7 @@ Pkg.add("PyPlot")
 Then you can launch the notebook in your browser by running
 ```julia
 using IJulia
-notebook()
+notebook(dir=".")
 ```
 
 ----
