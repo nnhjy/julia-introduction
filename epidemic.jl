@@ -1,5 +1,26 @@
 module epidemic
-export Cell, make_cells, to_colors, interact!, update, count_infections, count_deaths
+export Cell, Parameters, create_map, to_colors, interact!, update, count_infections, count_deaths
+
+"Enumerate possible states of a single cell"
+@enum InfectionStatus uninfected infected dead recovered immune
+
+"Data structure containing the infection status of a cell"
+mutable struct Cell
+    status::InfectionStatus
+    infection_time::Int8
+end
+
+"Parameters for a simulation"
+mutable struct Parameters
+    infection_rate::Float32
+    reinfection_rate::Float32
+    death_probability::Float32
+    recovery_time::Int8
+    immunity_rate::Float32
+end
+
+"Fast spread with low lethality and high immunity rate"
+parameters = Parameters(0.2, 0.001, 0.02, 8, 0.1)
 
 "Create a 2D array of cells with 4 infected cells in the middle"
 function make_cells(width::Int64=32, height::Int64=32, immunity_rate::Float32=0.0)
