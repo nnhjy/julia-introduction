@@ -24,10 +24,8 @@ function to_colors(cell::Int8)
 end
 
 """
-Run the interaction between one cell and a neighbour.
-
-If the neighbour is infected, it infect this cell with the propability
-parameters.infection_rate or, if this cell is recovered, parameters.reinfection_rate.
+Simulate interaction between 2 neighbouring cells. If one is infected, it can infect
+the other.
 """
 function interact(cell, neighbour, infection_rate)
     new_cell = cell
@@ -44,43 +42,28 @@ function interact(cell, neighbour, infection_rate)
     return new_cell
 end
 
-"Update a single cell. Check all neighbours and call the interact function for each."
-function update(old_cells, i, j, infection_rate)
-    # Copy the current value before updating
-    new_cell = old_cells[i,j]
-
-    # Loop over each neighbour
-    for (nb_i, nb_j) in [(i-1,j), (i+1,j), (i,j-1), (i,j+1)]
-
-        # Handle boundaries. On boundary cells, some neighbours don't exist.
-        if nb_i > size(old_cells)[1] || nb_i < 1
-            continue
-        end
-
-        if nb_j > size(old_cells)[2] || nb_j < 1
-            continue
-        end
-
-        new_cell = interact(new_cell, old_cells[nb_i, nb_j], infection_rate)
-    end
-
-    return new_cell
-end
-
-
 "Update the simulation one time step"
 function update!(cells, infection_rate::Real=0.1)
     # Create a copy to hold the old state
     old_cells = deepcopy(cells)
-    print(infection_rate)
 
-    # Here we update the array, so we need to index it
-    for i in 1:size(cells)[1]
-        # Loop over each cell in a row
+    # Loop over pairs of cells in the same row. There are size(cells)[1] columns, and size(cells)[1]-1 pairs.
+    for i in 1:size(cells)[1]-1
+        # loop over all columns
         for j in 1:size(cells)[2]
+            # So the cells are (i+1,j) and (i,j)
+            cells[i,j] = interact(cells[i,j], old_cells[i+1,j])
+            cells[i+1,j] = interact(cells[i+1,j], old_cells[i,j])
+        end
+    end
 
-            cells[i,j] = update(old_cells, i, j, infection_rate)
-
+    # Then loop over pairs in the same columns.
+    for i in 1:size(cells)[1]
+        # loop over all columns
+        for j in 1:size(cells)[2]-1
+            # So the cells are (i,j+1) and (i,j)
+            cells[i,j] = interact(cells[i,j], old_cells[i,j+1])
+            cells[i,j+1] = interact(cells[i,j+1], old_cells[i,j])
         end
     end
 end
