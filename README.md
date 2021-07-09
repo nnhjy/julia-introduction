@@ -1,6 +1,6 @@
 # Introduction to Julia
 
-This repository contains the content for the [Introduction to Julia](https://www.csc.fi/web/training/-/julia_intro_2019) course at CSC.
+This repository contains the content for the [Introduction to Julia](https://scicomp.aalto.fi/training/julia/julia-introduction/) by Aalto SciComp.
 
 Julia is a new emerging high-level, high-performance programming language. It aims to be simple to write and fast to run. In this course, we will introduce the basic concepts of programming with Julia. We will also discuss selected Julia packages and give an introduction to the Julia ecosystem. The course contains both lectures and hands-on exercises. All the material is provided as interactive notebooks.
 
@@ -13,7 +13,7 @@ Participants are expected to have some experience in computer programming and to
 
 
 ## Timetable
-|       |        | Monday         |  Tuesday
+|       |        | Tuesday         |  Wednesday
 | ----- |--------| -------------- | -----------
 | 09:00 | 45min  | Intro          |  Development practices
 | 09:45 | 45min  | **Exercises**  |  **Exercises**          
@@ -35,38 +35,9 @@ Lecture material can be read directly from GitHub  using your browser. Just clic
 
 For a quick introduction to the Jupyter notebook environment, see the [00_notebooks.ipynb](notebooks/00_notebooks.ipynb).
 
+## Installing Julia
 
-## Installation of Julia
-
-<!--
-### CSC notebook environment
-In the course we use the [CSC notebook environment](https://notebooks.csc.fi/).
-
-Once logged in, go to "Account" and "Join Group" by using the code provided to you.
-
-After joining the group, you should see "Introduction to Julia" in the Dashboard.
-
-All the hands-on exercises can be done in the cloud environment using the workstations in the training class (or using own laptop if you prefer so).
-
-
-### Quick start: using Julia on juliabox
-The simplest way to use Julia is to go to [juliabox.com](https://www.juliabox.com/). Once you log in (e.g. with a gmail account), you can run Julia code online (on Amazon Cloud servers) via the browser-based Jupyter notebook interface without installing anything on your computer.
-
-Although you wouldn't want to run large computations on juliabox, it should be fine for simple homework problems.
-
-To add our lecture material, click the `Git` button on the top left in the menu bar. Then insert the course material url
-```
-https://github.com/csc-training/julia-introduction.git
-```
-and type `master` for the branch. Folder name can be whatever you like, for example `julia-csc`.
-
-**Caveat**:
-Packages can not be installed using the Julia package manager. You must install external packages by clicking the `Packages` button on the top menu. After that, just type the name of the package and hit install.
-
--->
-
-### Installing Julia and IJulia
-If you use Julia enough, you'll eventually want to install it on your own computer. Your code will run faster and won't require a network connection, but can still use the same browser-based notebook interface.
+We recommend that you install Julia on you own laptop or work computer. This way it is easy to continue using Julia after the course.
 
 First, [download the current release of Julia](http://julialang.org/downloads/) and run the installer. Then open the Julia application (double-click on it); a window with a julia> prompt will appear. At the prompt, type:
 
@@ -88,7 +59,30 @@ using IJulia
 notebook(dir=".")
 ```
 
+### Cloning the materials
+
+Downloading these materials is useful, since that allows you to make notes and
+run code directly in the notes.
+You can download the materials as a
+[zip file](https://github.com/AaltoRSE/julia-introduction/archive/refs/heads/master.zip)
+or use your favorite git client to clone them from
+"https://github.com/AaltoRSE/julia-introduction.git".
+
+## Using the Aalto Jupyter server
+
+Aalto employees and students who have trouble installing Julia can also use the [Jupyter Hub](https://jupyter.cs.aalto.fi/). Click on the link and sign in using your Aalto account.
+
+To clone this repository on the Jupyter Hub, navigate to `git -> Clone a Repository` in
+the menu on the top of the page. Paste "https://github.com/AaltoRSE/julia-introduction.git"
+into the popup window and click `CLONE`.
+
+
+## Acknowledgements
+
+These materials are based on the [CSC course](https://github.com/csc-training/julia-introduction) by the same name. We have modified both the structure and the content, so we are responsible for any mistakes.
+
 ----
+
 ## References
 Much of this material is based on different excellent content found around the web such as:
 
