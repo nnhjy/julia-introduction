@@ -1,0 +1,7 @@
+[deps]
+Plots
+PlotlyJS
+PyPlot
+
+[compat]
+julia = "1.5"
