@@ -1,8 +1,5 @@
-module epidemic_simple
-export make_cells, to_colors, update!, count_infections, count_deaths
-
 "Create a 2D array of cells with 1 infected cell in the middle"
-function make_cells(width::Int8=7, height::Int8=7)
+function make_cells(width::Integer=7, height::Integer=7)
     cells = Matrix{Int8}(undef, width, height)
     for i in 1:size(cells)[1]
         for j in 1:size(cells)[2]
@@ -27,7 +24,7 @@ end
 Simulate interaction between 2 neighbouring cells. If one is infected, it can infect
 the other.
 """
-function interact(cell, neighbour, infection_rate)
+function interact(cell, neighbour, infection_rate=0.1)
     new_cell = cell
 
     # Check if the cell is infected
@@ -79,7 +76,4 @@ function count_infections(cells::Matrix{Int8})
         end
     end
     return infections
-end
-
-# End module
 end
