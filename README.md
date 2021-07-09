@@ -31,9 +31,13 @@ Participants are expected to have some experience in computer programming and to
 
 
 ## Lecture material usage
+
+We recommend that you download these materials and run the Jupyter notebooks locally.
+
+You can also quickly try the notebooks on [Binder](https://mybinder.org/v2/gh/AaltoRSE/julia-introduction/HEAD). 
+
 Lecture material can be read directly from GitHub  using your browser. Just click yourself inside the `notebooks` directory. However, for best experience, you should open the notebooks in the notebook environment. Installation of `Jupyter` notebooks and IJulia for this is described below.
 
-For a quick introduction to the Jupyter notebook environment, see the [00_notebooks.ipynb](notebooks/00_notebooks.ipynb).
 
 ## Installing Julia
 
