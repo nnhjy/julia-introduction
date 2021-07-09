@@ -13,28 +13,33 @@ Participants are expected to have some experience in computer programming and to
 
 
 ## Timetable
-|       |        | Tuesday         |  Wednesday
-| ----- |--------| -------------- | -----------
-| 09:00 | 45min  | Intro          |  Development practices
-| 09:45 | 45min  | **Exercises**  |  **Exercises**          
-| 10:30 | 15min  | Coffee break   |  Coffee break          
-| 10:45 | 30min  | Control flow   |  Julia ecosystem
-| 11:15 | 60min  | **Exercises**  |  **Exercises**   
-| 12:15 | 60min  | *Lunch*        |  *Lunch*
-| 13:15 | 30min  | Functions      |  Performance tips
-| 13:45 | 45min  | **Exercises**  |  **Exercises**
-| 14:30 | 15min  | Coffee break   |  Coffee break
-| 14:45 | 30min  | IO             |  Julia ecosystem II
-| 15:15 | 60min  | **Exercises**  |  End of course
-| 16:15 |        | End of day     |  
+|       |        | Tuesday          |
+| ----- |--------| --------------   |
+| 09:00 | 60min  | Intro to Julia   |
+| 10:00 | 10min  | **Coffee break** |     
+| 10:10 | 50min  | Functions        |          
+| 11:00 | 10min  | **Coffee break** |  
+| 11:10 | 50min  | Control flow     |
+| 12:00 | 10min  | **Coffee break** |
+| 12:10 | 50min  | IO               |
+| 13:00 |        | End of day       |  
 
-
+|       |        | Wednesday                      |
+| ----- |--------| --------------                 |
+| 09:00 | 60min  | Plotting                       |
+| 10:00 | 10min  | **Coffee break**               |
+| 10:10 | 50min  | Types and Multiple Dispatch    |        
+| 11:00 | 10min  | **Coffee break**               |
+| 11:10 | 30min  | Development Practices          |
+| 12:00 | 10min  | **Coffee break**               |
+| 12:10 | 50min  | Performance Tips and Ecosystem |
+| 13:00 |        | End of day                     |
 
 ## Lecture material usage
 
 We recommend that you download these materials and run the Jupyter notebooks locally.
 
-You can also quickly try the notebooks on [Binder](https://mybinder.org/v2/gh/AaltoRSE/julia-introduction/HEAD). 
+You can also quickly try the notebooks on [Binder](https://mybinder.org/v2/gh/AaltoRSE/julia-introduction/HEAD).
 
 Lecture material can be read directly from GitHub  using your browser. Just click yourself inside the `notebooks` directory. However, for best experience, you should open the notebooks in the notebook environment. Installation of `Jupyter` notebooks and IJulia for this is described below.
 
