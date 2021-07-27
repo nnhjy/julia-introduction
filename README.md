@@ -13,6 +13,7 @@ Participants are expected to have some experience in computer programming and to
 
 
 ## Timetable
+
 |       |        | Tuesday          |
 | ----- |--------| --------------   |
 | 09:00 | 60min  | Intro to Julia   |
@@ -26,22 +27,36 @@ Participants are expected to have some experience in computer programming and to
 
 |       |        | Wednesday                      |
 | ----- |--------| --------------                 |
-| 09:00 | 60min  | Plotting                       |
+| 09:00 | 60min  | Plotting and Using Packages    |
 | 10:00 | 10min  | **Coffee break**               |
 | 10:10 | 50min  | Types and Multiple Dispatch    |        
 | 11:00 | 10min  | **Coffee break**               |
 | 11:10 | 30min  | Development Practices          |
 | 12:00 | 10min  | **Coffee break**               |
-| 12:10 | 50min  | Performance Tips and Ecosystem |
+| 12:10 | 50min  | Performance Tips               |
 | 13:00 |        | End of day                     |
 
-## Lecture material usage
+
+## About the Materials
 
 We recommend that you download these materials and run the Jupyter notebooks locally.
+See the instructions below. If you cannot run Julia locally, but you have an Aalto account, follow the instructions for the Aalto Jupyter.
 
-You can also quickly try the notebooks on [Binder](https://mybinder.org/v2/gh/AaltoRSE/julia-introduction/HEAD).
+The materials are a work in progress, so expect changes and don't be surprised if you discover a bug. If you find any problems, let us know by creating an issue
 
-Lecture material can be read directly from GitHub  using your browser. Just click yourself inside the `notebooks` directory. However, for best experience, you should open the notebooks in the notebook environment. Installation of `Jupyter` notebooks and IJulia for this is described below.
+<!-- You can also quickly try the notebooks on [Binder](https://mybinder.org/v2/gh/AaltoRSE/julia-introduction/HEAD). -->
+
+Lecture material can be read directly from GitHub  using your browser. Just click yourself inside the `notebooks` directory. However, for best experience, you should open the notebooks in a notebook environment.
+
+
+### Cloning the materials
+
+Downloading these materials is useful, since that allows you to make notes and
+run code directly in the notes.
+You can download the materials as a
+[zip file](https://github.com/AaltoRSE/julia-introduction/archive/refs/heads/master.zip)
+or use your favorite git client to clone them from
+"https://github.com/AaltoRSE/julia-introduction.git".
 
 
 ## Installing Julia
@@ -61,21 +76,16 @@ Pkg.add("PlotlyJS")
 Pkg.add("PyPlot")
 ```
 
-
 Then you can launch the notebook in your browser by running
 ```julia
 using IJulia
 notebook(dir=".")
 ```
 
-### Cloning the materials
+The first time you run this, it will ask about installing Jupyter using conda.
+Answer 'y' and after a while, the notebook environment will open in the
+browser.
 
-Downloading these materials is useful, since that allows you to make notes and
-run code directly in the notes.
-You can download the materials as a
-[zip file](https://github.com/AaltoRSE/julia-introduction/archive/refs/heads/master.zip)
-or use your favorite git client to clone them from
-"https://github.com/AaltoRSE/julia-introduction.git".
 
 ## Using the Aalto Jupyter server
 
