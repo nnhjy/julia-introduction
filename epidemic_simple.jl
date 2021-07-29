@@ -15,7 +15,7 @@ function to_colors(cell::Int8)
     if cell == 0
         return RGB(0.0,0.8,0.0)
     end
-    if cell.status == 1
+    if cell == 1
         return RGB(0.8,0.0,0.0)
     end
 end
