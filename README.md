@@ -1,6 +1,6 @@
 # Introduction to Julia
 
-This repository contains the content for the [Introduction to Julia](https://scicomp.aalto.fi/training/julia/julia-introduction/) by Aalto SciComp.
+This repository contains the content for the [Introduction to Julia](https://scicomp.aalto.fi/training/julia/julia-introduction/) course by Aalto SciComp.
 
 Julia is a new emerging high-level, high-performance programming language. It aims to be simple to write and fast to run. In this course, we will introduce the basic concepts of programming with Julia. We will also discuss selected Julia packages and give an introduction to the Julia ecosystem. The course contains both lectures and hands-on exercises. All the material is provided as interactive notebooks.
 
