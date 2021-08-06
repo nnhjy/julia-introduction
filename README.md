@@ -63,9 +63,11 @@ or use your favorite git client to clone them from
 
 We recommend that you install Julia on you own laptop or work computer. This way it is easy to continue using Julia after the course.
 
-First, [download the current release of Julia](http://julialang.org/downloads/). For more details see [Julia's own installation instructions.](https://julialang.org/downloads/platform/).
+First, [download the current release of Julia](http://julialang.org/downloads/). For more details see [Julia's own installation instructions](https://julialang.org/downloads/platform/).
 
 **Windows**: Run the installer. Then open the Julia application (double-click on it); a window with a julia> prompt will appear.
+
+If you want to use WSL, check the instructions at the end.
 
 **MacOS**: Open the dmg file and dragg the Julia app `Applications`. Run the application and a window with a julia> prompt will appear.
 
@@ -138,3 +140,20 @@ Much of this material is based on different excellent content found around the w
 ### Parallellism:
 - https://slides.com/valentinchuravy/julia-parallelism
 - MIT course: Performance Computing in a High Level Language: https://github.com/stevengj/18S096
+
+
+## Windows Subsystem Linux (WSL) installation steps
+
+Install an X server. [Xming0](https://sourceforge.net/projects/xming/) is a good option.
+On Aalto laptops, you can find `VcXsrv` in the Software Center. 
+
+Run `export DISPLAY=:0` and add it to the `.bashrc` file in your home directory.
+
+Install a web browser using `apt`. For example, for firefox, run 
+```bash 
+sudo apt update
+sudo apt upgrade
+sudo apt install firefox
+```
+
+Then follow the Linux instructions.
