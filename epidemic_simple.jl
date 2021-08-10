@@ -1,3 +1,5 @@
+using Plots
+
 "Create a 2D array of cells with 1 infected cell in the middle"
 function make_cells(width::Integer=7, height::Integer=7)
     cells = Matrix{Int8}(undef, width, height)
@@ -11,7 +13,7 @@ function make_cells(width::Integer=7, height::Integer=7)
 end
 
 "Map the cells to colors for plotting"
-function to_colors(cell::Int8)
+function to_colors(cell)
     if cell == 0
         return RGB(0.0,0.8,0.0)
     end
