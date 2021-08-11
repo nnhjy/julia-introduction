@@ -15,7 +15,6 @@ mutable struct Parameters
     infection_rate::Float32
     death_probability::Float32
     recovery_time::Int8
-    immunity_rate::Float32
 end
 
 "Map the cells to colors for plotting"
