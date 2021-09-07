@@ -53,7 +53,7 @@ function to_colors(cell::Cell)
 end
 
 """
-Run the interaction between one cell and a neighbour.
+Simulate the interaction between one cell and a neighbour.
 
 If the neighbour is infected, it infect this cell with the propability parameters.infection_rate.
 """
