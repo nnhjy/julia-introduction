@@ -87,7 +87,8 @@ export PATH="$PATH:~/julia-1.6.2/bin"
 
 **All systems**:
 
-Install the `IJulia` package by pasting the following two
+Start a Julia session. 
+Install the `IJulia` package by pasting the following two:
 
 ```julia
 using Pkg
