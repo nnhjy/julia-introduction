@@ -17,6 +17,17 @@ mutable struct Parameters
     recovery_time::Int8
 end
 
+"Create a map of immune and uninfected cells with 1 infected in the middle."
+function make_cells(width::Integer=7, height::Integer=7)
+    cells = Matrix{Cell}(undef, width, height)
+    for i in 1:size(cells)[1]
+        for j in 1:size(cells)[2]
+            cells[i,j] = Cell(uninfected, 0)
+        end
+    end
+    cells[width÷2+1,height÷2+1].status = infected
+end
+
 "Map the cells to colors for plotting"
 function to_colors(cell)
     if cell.status == uninfected
