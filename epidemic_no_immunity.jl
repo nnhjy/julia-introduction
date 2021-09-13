@@ -26,7 +26,33 @@ function make_cells(width::Integer=7, height::Integer=7)
         end
     end
     cells[width÷2+1,height÷2+1].status = infected
+    return cells
 end
+
+"show the cells as filled or empty rectangle characters"
+function Base.show(io::IO, cell::Cell)
+    if cell.status == infected
+        print(io, "◼")
+    else
+        print(io, "◻")
+    end
+end
+
+"show an array of cells as filled or empty rectangle characters"
+function Base.show(io::IO, cells::Array{Cell, 2})
+    Nx = size(cells)[1]
+    Ny = size(cells)[2]
+    
+    # Iterate over rows and columns separately
+    for j in 1:Ny
+        for i in 1:Nx
+            print(cells[i,j])
+        end
+    print('\n')
+    end    
+end
+
+print(cells)
 
 "Map the cells to colors for plotting"
 function to_colors(cell)
