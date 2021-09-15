@@ -2,7 +2,7 @@ using Colors
 using Plots
 
 "Enumerate possible states of a single cell"
-@enum InfectionStatus uninfected infected dead recovered immune
+@enum InfectionStatus uninfected infected dead recovered
 
 "Data structure containing the infection status of a cell"
 mutable struct Cell
@@ -10,12 +10,53 @@ mutable struct Cell
     infection_time::Int8
 end
 
-"Parameters for a simulation"
-mutable struct Parameters
-    infection_rate::Float32
-    death_probability::Float32
-    recovery_time::Int8
+"Create a 2D array of cells with 1 infected cell in the middle"
+function make_cells(width::Integer=7, height::Integer=7)
+    cells = Matrix{Cell}(undef, width, height)
+    for i in 1:size(cells)[1]
+        for j in 1:size(cells)[2]
+            cells[i,j] = Cell(uninfected, 0)
+        end
+    end
+    cells[width÷2+1,height÷2+1].status = infected
+    return cells
 end
+
+"""Simulate an interaction between two cells. In the other cell is
+   infected, it may infect the this cell.
+"""
+function interact!(this_cell::Cell, other_cell::Cell, infection_rate)
+    if this_cell.status == uninfected && other_cell.status == infected
+        if rand(1)[1] < infection_rate
+            this_cell.status = infected
+            this_cell.infection_time = 0
+        end
+    end
+end
+
+"Show the cell as an empty or a filled in box for quick viewing"
+function Base.show(io::IO, cell::Cell)
+    if cell.status == infected
+        print(io, "◼")
+    else
+        print(io, "◻")
+    end
+end
+
+"show an array of cells as filled or empty rectangle characters"
+function Base.show(io::IO, cells::Array{Cell, 2})
+    Nx = size(cells)[1]
+    Ny = size(cells)[2]
+
+    # Iterate over rows and columns separately
+    for j in 1:Ny
+        for i in 1:Nx
+            print(cells[i,j])
+        end
+    print('\n')
+    end
+end
+
 
 "Map the cells to colors for plotting"
 function to_colors(cell)
@@ -38,9 +79,9 @@ Run the interaction between one cell and a neighbour.
 
 If the neighbour is infected, it infect this cell with the propability parameters.infection_rate.
 """
-function interact!(new_cell, other_cell, parameters::Parameters)
+function interact!(new_cell, other_cell, infection_rate)
     if new_cell.status == uninfected && other_cell.status == infected
-        if rand(1)[1] < parameters.infection_rate
+        if rand(1)[1] < infection_rate
             new_cell.status = infected
             new_cell.infection_time = 0
         end
@@ -50,19 +91,29 @@ end
 """
 Update a single cell, not accounting for it's interactions with the neighbours.
 """
-function update!(new_cell, parameters::Parameters)
-    if new_cell.status == infected
-        # Increase the number of time steps since infection
-        new_cell.infection_time += 1
+function update!(cells, infection_rate)
+    # Create a copy to remember the old state
+    old_cells = deepcopy(cells)
 
-        # Check if the cell recovers
-        if new_cell.infection_time > parameters.recovery_time
-            new_cell.status = recovered
+    # Find the number of cells in each direction
+    Nx = size(cells)[1]
+    Ny = size(cells)[2]
+
+    # Loop over pairs of cells in the same row. There are Nx-1 pairs.
+    for j in 1:Ny
+        # loop over all columns
+        for i in 1:Nx-1
+            interact!(cells[i,j], old_cells[i+1,j], infection_rate)
+            interact!(cells[i+1,j], old_cells[i,j], infection_rate)
         end
+    end
 
-        # Check if it dies
-        if rand(1)[1] < parameters.death_probability
-            new_cell.status = dead
+    # Loop over pairs of cells in the same row. There are Nx-1 pairs.
+    for j in 1:Ny-1
+        # loop over all columns
+        for i in 1:Nx
+            interact!(cells[i,j], old_cells[i,j+1], infection_rate)
+            interact!(cells[i,j+1], old_cells[i,j], infection_rate)
         end
     end
 end
@@ -93,26 +144,4 @@ function count_deaths(cells::Matrix{})
     return deaths
 end
 
-"""
-Update the cells in the 2D array of Cells, using given parameters.
-"""
-function update!(cells::Matrix{}, parameters::Parameters)
-    old_cells = deepcopy(cells)
-    for i in 1:size(cells)[1]
-        for j in 1:size(cells)[2]
-            update!(cells[i,j], parameters)
-        end
-    end
-    for i in 1:size(cells)[1]-1
-        for j in 1:size(cells)[2]
-            interact!(cells[i,j], old_cells[i+1,j], parameters)
-            interact!(cells[i+1,j], old_cells[i,j], parameters)
-        end
-    end
-    for i in 1:size(cells)[1]
-        for j in 1:size(cells)[2]-1
-            interact!(cells[i,j], old_cells[i,j+1], parameters)
-            interact!(cells[i,j+1], old_cells[i,j], parameters)
-        end
-    end
-end
+
