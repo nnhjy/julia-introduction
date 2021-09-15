@@ -14,26 +14,26 @@ Participants are expected to have some experience in computer programming and to
 
 ## Timetable
 
-|       |        | Tuesday          |
-| ----- |--------| --------------   |
-| 09:00 | 60min  | Intro to Julia   |
-| 10:00 | 10min  | **Coffee break** |     
-| 10:10 | 50min  | Functions        |          
-| 11:00 | 10min  | **Coffee break** |  
-| 11:10 | 50min  | Control flow     |
-| 12:00 | 10min  | **Coffee break** |
-| 12:10 | 50min  | IO               |
-| 13:00 |        | End of day       |  
+|       |        | Tuesday              |
+| ----- |--------| --------------       |
+| 09:00 | 60min  | Intro to Julia       |
+| 10:00 | 10min  | **Coffee break**     |     
+| 10:10 | 50min  | Functions            |          
+| 11:00 | 10min  | **Coffee break**     |  
+| 11:10 | 50min  | Functions continued  |
+| 12:00 | 10min  | **Coffee break**     |
+| 12:10 | 50min  | Control flow         |
+| 13:00 |        | End of day           |  
 
 |       |        | Wednesday                      |
 | ----- |--------| --------------                 |
-| 09:00 | 60min  | Plotting and Using Packages    |
+| 09:00 | 60min  | Packages and plotting          |
 | 10:00 | 10min  | **Coffee break**               |
-| 10:10 | 50min  | Types and Multiple Dispatch    |        
+| 10:10 | 50min  | Strings and IO                 |        
 | 11:00 | 10min  | **Coffee break**               |
-| 11:10 | 30min  | Development Practices          |
+| 11:10 | 50min  | Creating Packages              |
 | 12:00 | 10min  | **Coffee break**               |
-| 12:10 | 50min  | Performance Tips               |
+| 12:10 | 50min  | Performance and bonus topics   |
 | 13:00 |        | End of day                     |
 
 
@@ -145,12 +145,12 @@ Much of this material is based on different excellent content found around the w
 ## Windows Subsystem Linux (WSL) installation steps
 
 Install an X server. [Xming0](https://sourceforge.net/projects/xming/) is a good option.
-On Aalto laptops, you can find `VcXsrv` in the Software Center. 
+On Aalto laptops, you can find `VcXsrv` in the Software Center.
 
 Run `export DISPLAY=:0` and add it to the `.bashrc` file in your home directory.
 
-Install a web browser using `apt`. For example, for firefox, run 
-```bash 
+Install a web browser using `apt`. For example, for firefox, run
+```bash
 sudo apt update
 sudo apt upgrade
 sudo apt install firefox
