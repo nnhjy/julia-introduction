@@ -1,11 +1,8 @@
-module epidemic
-export Cell, Parameters, create_map, to_colors, interact!, update, count_infections, count_deaths
-
-"Enumerate possible states of a single cell"
+"Enumerate possible states of a single plant"
 @enum InfectionStatus uninfected infected dead recovered immune
 
-"Data structure containing the infection status of a cell"
-mutable struct Cell
+"Data structure containing the infection status of a plant"
+mutable struct Plant
     status::InfectionStatus
     infection_time::Int8
 end
@@ -18,104 +15,114 @@ mutable struct Parameters
     immunity_rate::Float32
 end
 
-"Create a map of immune and uninfected cells with 1 infected in the middle."
-function make_cells(width::Integer=7, height::Integer=7, immunity_rate::Float32)
-    cells = Matrix{Cell}(undef, width, height)
-    for i in 1:size(cells)[1]
-        for j in 1:size(cells)[2]
+"Create a map of immune and uninfected plants with 1 infected in the middle."
+function make_plants(width::Integer=7, height::Integer=7, immunity_rate::Float64=0.0)
+    plants = Matrix{Plant}(undef, width, height)
+    for i in 1:size(plants)[1]
+        for j in 1:size(plants)[2]
             if rand(1)[1] < immunity_rate
-                cells[i,j] = Cell(immune, 0)
+                plants[i,j] = Plant(immune, 0)
             else
-                cells[i,j] = Cell(uninfected, 0)
+                plants[i,j] = Plant(uninfected, 0)
             end
         end
     end
-    cells[width÷2+1,height÷2+1] = 1
+    plants[width÷2+1,height÷2+1] = Plant(infected, 0)
+    return plants
 end
 
-"Map the cells to colors for plotting"
-function to_colors(cell::Cell)
-    if cell.status == uninfected
+"Show the plant as an empty or a filled in box for quick viewing"
+function Base.show(io::IO, plant::Plant)
+    if plant.status == infected
+        print(io, "◼")
+    else
+        print(io, "◻")
+    end
+end
+
+"Map the plants to colors for plotting"
+function to_colors(plant::Plant)
+    if plant.status == uninfected
         return RGB(0.0,0.8,0.0)
     end
-    if cell.status == infected
+    if plant.status == infected
         return RGB(0.8,0.0,0.0)
     end
-    if cell.status == dead
+    if plant.status == dead
         return RGB(0.1,0.1,0.1)
     end
-    if cell.status == recovered
+    if plant.status == recovered
         return RGB(0.0,0.0,0.8)
     end
-    if cell.status == immune
+    if plant.status == immune
         return RGB(0.2,0.2,1.0)
     end
 end
 
 """
-Simulate the interaction between one cell and a neighbour.
+Simulate the interaction between one plant and a neighbour.
 
-If the neighbour is infected, it infect this cell with the propability parameters.infection_rate.
+If the neighbour is infected, it infect this plant with the propability parameters.infection_rate.
 """
-function interact!(new_cell::Cell, other_cell::Cell, parameters::Parameters)
-    if new_cell.status == uninfected && other_cell.status == infected
-        if rand(1)[1] < parameters.infection_rate
-            new_cell.status = infected
-            new_cell.infection_time = 0
+function interact!(new_plant::Plant, other_plant::Plant, infection_rate)
+    if new_plant.status == uninfected && other_plant.status == infected
+        if rand(1)[1] < infection_rate
+            new_plant.status = infected
+            new_plant.infection_time = 0
         end
     end
 end
 
 """
-Update a single cell, not accounting for it's interactions with the neighbours.
+Update a single plant, not accounting for it's interactions with the neighbours.
 """
-function update!(new_cell::Cell, parameters::Parameters)
-    if new_cell.status == infected
+function update!(new_plant::Plant, recovery_time, death_rate)
+    if new_plant.status == infected
         # Increase the number of time steps since infection
-        new_cell.infection_time += 1
+        new_plant.infection_time += 1
 
-        # Check if the cell recovers
-        if new_cell.infection_time > parameters.recovery_time
-            new_cell.status = recovered
+        # Check if the plant recovers
+        if new_plant.infection_time > recovery_time
+            new_plant.status = recovered
         end
 
         # Check if it dies
-        if rand(1)[1] < parameters.death_probability
-            new_cell.status = dead
+        if rand(1)[1] < death_rate
+            new_plant.status = dead
         end
     end
 end
 
 """
-Update the cells in the 2D array of Cells, using given parameters.
+Update the plants in the 2D array of plants, using given parameters.
 """
-function update!(cells::Matrix{Cell}, parameters::Parameters)
-    old_cells = deepcopy(cells)
-    for i in 1:size(cells)[1]
-        for j in 1:size(cells)[2]
-            update!(cells[i,j], parameters)
+function update!(plants::Matrix{Plant}, parameters::Parameters)
+    old_plants = deepcopy(plants)
+    for i in 1:size(plants)[1]
+        for j in 1:size(plants)[2]
+            update!(plants[i,j], parameters)
         end
     end
-    for i in 1:size(cells)[1]-1
-        for j in 1:size(cells)[2]
-            interact!(cells[i,j], old_cells[i+1,j], parameters)
-            interact!(cells[i+1,j], old_cells[i,j], parameters)
+    for i in 1:size(plants)[1]-1
+        for j in 1:size(plants)[2]
+            interact!(plants[i,j], old_plants[i+1,j], parameters)
+            interact!(plants[i+1,j], old_plants[i,j], parameters)
         end
     end
-    for i in 1:size(cells)[1]
-        for j in 1:size(cells)[2]-1
-            interact!(cells[i,j], old_cells[i,j+1], parameters)
-            interact!(cells[i,j+1], old_cells[i,j], parameters)
+    for i in 1:size(plants)[1]
+        for j in 1:size(plants)[2]-1
+            interact!(plants[i,j], old_plants[i,j+1], parameters)
+            interact!(plants[i,j+1], old_plants[i,j], parameters)
         end
     end
 end
 
 "Count the current number of infections"
-function count_infections(cells::Matrix{Cell})
+function count_infections(plants::Matrix{Plant})
     infections = 0
-    for i in 1:size(cells)[1]
-        for j in 1:size(cells)[2]
-            if cells[i,j].status == infected
+    for i in 1:size(plants)[1]
+        for j in 1:size(plants)[2]
+            if plants[i,j].status == infected
                 infections += 1
             end
         end
@@ -123,18 +130,15 @@ function count_infections(cells::Matrix{Cell})
     return infections
 end
 
-"Count the number of dead cells"
-function count_deaths(cells::Matrix{Cell})
+"Count the number of dead plants"
+function count_deaths(plants::Matrix{Plant})
     deaths = 0
-    for i in 1:size(cells)[1]
-        for j in 1:size(cells)[2]
-            if cells[i,j].status == dead
+    for i in 1:size(plants)[1]
+        for j in 1:size(plants)[2]
+            if plants[i,j].status == dead
                 deaths += 1
             end
         end
     end
     return deaths
-end
-
-# End module
 end
