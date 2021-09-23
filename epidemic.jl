@@ -96,23 +96,23 @@ end
 """
 Update the plants in the 2D array of plants, using given parameters.
 """
-function update!(plants::Matrix{Plant}, parameters::Parameters)
+function update!(plants::Matrix{Plant}, recovery_time, death_rate, infection_rate)
     old_plants = deepcopy(plants)
     for i in 1:size(plants)[1]
         for j in 1:size(plants)[2]
-            update!(plants[i,j], parameters)
+            update!(plants[i,j], recovery_time, death_rate)
         end
     end
     for i in 1:size(plants)[1]-1
         for j in 1:size(plants)[2]
-            interact!(plants[i,j], old_plants[i+1,j], parameters)
-            interact!(plants[i+1,j], old_plants[i,j], parameters)
+            interact!(plants[i,j], old_plants[i+1,j], infection_rate)
+            interact!(plants[i+1,j], old_plants[i,j], infection_rate)
         end
     end
     for i in 1:size(plants)[1]
         for j in 1:size(plants)[2]-1
-            interact!(plants[i,j], old_plants[i,j+1], parameters)
-            interact!(plants[i,j+1], old_plants[i,j], parameters)
+            interact!(plants[i,j], old_plants[i,j+1], infection_rate)
+            interact!(plants[i,j+1], old_plants[i,j], infection_rate)
         end
     end
 end
