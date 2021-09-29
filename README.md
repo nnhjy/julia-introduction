@@ -13,27 +13,31 @@ Participants are expected to have some experience in computer programming and to
 
 ## Timetable
 
-|       |        | Tuesday              |
-| ----- |--------| --------------       |
-| 09:00 | 60min  | Intro to Julia       |
-| 10:00 | 10min  | **Coffee break**     |     
-| 10:10 | 50min  | Functions            |          
-| 11:00 | 10min  | **Coffee break**     |  
-| 11:10 | 50min  | Functions continued  |
-| 12:00 | 10min  | **Coffee break**     |
-| 12:10 | 50min  | Control flow         |
-| 13:00 |        | End of day           |  
+|       |        | Tuesday                 |
+| ----- |--------| --------------          |
+| 09:00 | 60min  | Intro to Julia          |
+| 10:00 | 10min  | **Coffee break**        |     
+| 10:10 | 50min  | Functions               |          
+| 11:00 | 10min  | **Coffee break**        |  
+| 11:10 | 50min  | Functions continued     |
+| 12:00 | 30min  | **Lunch break**         |
+| 12:30 | 40min  | Control flow            |
+| 13:10 | 10min  | **Coffee break**        |
+| 13:20 | 40min  | Packages and plotting   |
+| 14:00 |        | End of day              |  
 
-|       |        | Wednesday                      |
-| ----- |--------| --------------                 |
-| 09:00 | 60min  | Packages and plotting          |
-| 10:00 | 10min  | **Coffee break**               |
-| 10:10 | 50min  | Strings and IO                 |        
-| 11:00 | 10min  | **Coffee break**               |
-| 11:10 | 50min  | Creating Packages              |
-| 12:00 | 10min  | **Coffee break**               |
-| 12:10 | 50min  | Performance and bonus topics   |
-| 13:00 |        | End of day                     |
+|       |        | Wednesday                        |
+| ----- |--------| --------------                   |
+| 09:00 | 60min  | Strings and IO                   |        
+| 10:00 | 10min  | **Coffee break**                 |
+| 10:10 | 50min  | Creating Packages                |
+| 11:00 | 10min  | **Coffee break**                 |
+| 11:10 | 50min  | Creating Packages continued      |
+| 12:00 | 30min  | **Lunch break**                  |
+| 12:30 | 40min  | Performance                      |
+| 13:10 | 10min  | **Coffee break**                 |
+| 13:20 | 40min  | Metaprogramming or vectorization |
+| 14:00 |        | End of day                       |
 
 
 ## About the Materials
