@@ -1,3 +1,5 @@
+using Plots
+
 "Enumerate possible states of a single plant"
 @enum InfectionStatus uninfected infected dead recovered immune
 
