@@ -2,4 +2,5 @@
 #slides/*.html
 .ipynb_checkpoints/
 reveal.js
+.vscode
 
