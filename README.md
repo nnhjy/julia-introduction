@@ -10,36 +10,6 @@ The course is aimed for everybody with beginner to intermediate level of skills 
 ## Prerequisites
 Participants are expected to have some experience in computer programming and to be familiar with the basic concepts (e.g. variables, statements, control structures, functions) but previous knowledge of Julia is not required.
 
-
-## Timetable
-
-|       |        | Tuesday                 |
-| ----- |--------| --------------          |
-| 09:00 | 60min  | Intro to Julia          |
-| 10:00 | 10min  | **Coffee break**        |     
-| 10:10 | 50min  | Functions               |          
-| 11:00 | 10min  | **Coffee break**        |  
-| 11:10 | 50min  | Functions continued     |
-| 12:00 | 30min  | **Lunch break**         |
-| 12:30 | 40min  | Control flow            |
-| 13:10 | 10min  | **Coffee break**        |
-| 13:20 | 40min  | Packages and plotting   |
-| 14:00 |        | End of day              |  
-
-|       |        | Wednesday                        |
-| ----- |--------| --------------                   |
-| 09:00 | 60min  | Strings and IO                   |        
-| 10:00 | 10min  | **Coffee break**                 |
-| 10:10 | 50min  | Creating Packages                |
-| 11:00 | 10min  | **Coffee break**                 |
-| 11:10 | 50min  | Creating Packages continued      |
-| 12:00 | 30min  | **Lunch break**                  |
-| 12:30 | 40min  | Performance                      |
-| 13:10 | 10min  | **Coffee break**                 |
-| 13:20 | 40min  | Metaprogramming or vectorization |
-| 14:00 |        | End of day                       |
-
-
 ## About the Materials
 
 We recommend that you download these materials and run the Jupyter notebooks locally.
