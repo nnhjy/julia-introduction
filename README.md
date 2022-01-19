@@ -40,25 +40,16 @@ First, [download the current release of Julia](http://julialang.org/downloads/).
 
 **Windows**: Run the installer. Then open the Julia application (double-click on it); a window with a julia> prompt will appear.
 
+Change the julia executable to which the command `julia` points:
+1. System environment variable: Control Panel\All Control Panel Items\System --> Advanced system settings --> Advanced --> Environmental Variables --> Edit in `Path`
+2. User environment variable: Search `environment variables` in the Windows taskbar --> "Edit environment variable for your account" --> Edit in `Path`
+3. **Edit** in `Path`: Click `New` to add `X:\directory\to\Julia-x.x.x\bin` and delete the directory for old versions
+
+*Check environment variables*: In `Command Prompt` type `path`. In normal mode, it shows the variables for the user, and in administrator mode the system variables.
+
 If you want to use WSL, check the instructions at the end.
 
-**MacOS**: Open the dmg file and dragg the Julia app `Applications`. Run the application and a window with a julia> prompt will appear.
-
-**Linux**: Open a terminal window and run the following commands to
-download and extract the necessary files:
-
-```bash
-wget https://julialang-s3.julialang.org/bin/linux/x64/1.6/julia-1.6.5-linux-x86_64.tar.gz
-tar zxvf julia-1.6.5-linux-x86_64.tar.gz
-export PATH="$PATH:~/julia-1.6.5/bin"
-```
-
-To use Julia later, you will need to add the following line to the `.bashrc` file in your home folder.
-```bash
-export PATH="$PATH:~/julia-1.6.5/bin"
-```
-
-**All systems**:
+**Work with jupyter notebook**:
 
 Start a Julia session.
 Install the `IJulia` package by pasting the following two:
@@ -84,16 +75,6 @@ notebook(dir=".")
 The first time you run this, it will ask about installing Jupyter using conda.
 Answer 'y' and after a while, the notebook environment will open in the
 browser.
-
-
-## Using the Aalto Jupyter server
-
-Aalto employees and students who have trouble installing Julia can also use the [Jupyter Hub](https://jupyter.cs.aalto.fi/). Click on the link and sign in using your Aalto account.
-
-To clone this repository on the Jupyter Hub, navigate to `git -> Clone a Repository` in
-the menu on the top of the page. Paste "https://github.com/AaltoRSE/julia-introduction.git"
-into the popup window and click `CLONE`.
-
 
 ## Acknowledgements
 
