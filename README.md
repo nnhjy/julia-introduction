@@ -29,7 +29,7 @@ run code directly in the notes.
 You can download the materials as a
 [zip file](https://github.com/AaltoRSE/julia-introduction/archive/refs/heads/master.zip)
 or use your favorite git client to clone them from
-"https://github.com/AaltoRSE/julia-introduction.git".
+[its github repository](https://github.com/AaltoRSE/julia-introduction.git).
 
 
 ## Installing Julia
@@ -75,6 +75,19 @@ notebook(dir=".")
 The first time you run this, it will ask about installing Jupyter using conda.
 Answer 'y' and after a while, the notebook environment will open in the
 browser.
+
+## Manage Julia conda environment
+
+**Option 1**: use [Conda.jl](https://github.com/JuliaPy/Conda.jl) package.
+
+**Option 2**: general approach of conda environment management
+1. Use `Anaconda Prompt`
+2. Check all info of conda: "`conda info`"
+3. Check existing conda environments: "`conda info --env`" or "`conda env list`"
+4. Switch between conda envs: "`activate\deactivate path/to/env`"
+5. Switch to the conda environment used by Julia
+6. Update the python: "`conda update python`"
+For more info, also see [manage conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) and [manage conda python](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-python.html). 
 
 ## Acknowledgements
 
