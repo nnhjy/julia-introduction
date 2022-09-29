@@ -84,13 +84,24 @@ browser.
 **Option 1**: use [Conda.jl](https://github.com/JuliaPy/Conda.jl) package.
 
 **Option 2**: general approach of conda environment management
-1. Use `Anaconda Prompt`
+1. [Activate conda command in pwsh](#activate-conda-command-in-window-poweshell-pwsh), or use `Anaconda Prompt` directly
 2. Check all info of conda: "`conda info`"
 3. Check existing conda environments: "`conda info --env`" or "`conda env list`"
-4. Switch between conda envs: "`activate\deactivate path/to/env`"
+4. Switch between conda envs: "`(conda) activate\deactivate path/to/env`"
 5. Switch to the conda environment used by Julia
 6. Update the python: "`conda update python`"
-For more info, also see [manage conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) and [manage conda python](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-python.html). 
+For more info, also see [manage conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) and [manage conda python](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-python.html).
+
+### Activate `conda` command in Window poweshell (pwsh)
+- In `Anaconda (Powershell) Prompt`, execute
+```console
+conda init powershell
+```
+- For more info, see [here](https://hackf5.medium.com/how-to-enable-anaconda-in-powershell-7-on-windows-394ba62c3f9c) 
+- This would enable automatic activation of conda 'base' environment in the pwsh. To prevent this, execute
+```console
+conda config --set auto_activate_base false
+```
 
 ## Acknowledgements
 
