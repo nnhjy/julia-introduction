@@ -89,8 +89,13 @@ browser.
 3. Check existing conda environments: "`conda info --env`" or "`conda env list`"
 4. Switch between conda envs: "`(conda) activate\deactivate path/to/env`"
 5. Switch to the conda environment used by Julia
-6. Update the python: "`conda update python`"
-For more info, also see [manage conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) and [manage conda python](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-python.html).
+6. Update conda and all packages: 
+```console
+conda update conda
+conda update --all
+```
+7. Update the python: "`conda update python`"
+For more info, also see [manage conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html), [manage conda python](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-python.html), and [conda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf).
 
 ### Activate `conda` command in Window poweshell (pwsh)
 - In `Anaconda (Powershell) Prompt`, execute
