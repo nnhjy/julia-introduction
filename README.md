@@ -43,7 +43,7 @@ First, [download the current release of Julia](http://julialang.org/downloads/).
 Change the julia executable to which the command `julia` points:
 1. System environment variable (if you install Julia for all users):
 "Control Panel\All Control Panel Items\System --> Advanced system settings --> Advanced --> Environmental Variables --> Edit in `Path`" 
-    - under "User variables for `administrator_username`" only for the administrator, under "System variables" for all users)
+    - under "User variables for `administrator_username`" only for the administrator, under "System variables" for all users
 2. User environment variable (if you install Julia for the current user): 
 Search `environment variables` in the Windows taskbar --> "Edit environment variable for your account" --> Edit in `Path` under "User variables for `the_current_username`"
 3. **Edit in `Path`**: Click `New` to add `X:\directory\to\Julia-x.x.x\bin` and delete the directory for old versions
@@ -79,7 +79,18 @@ The first time you run this, it will ask about installing Jupyter using conda.
 Answer 'y' and after a while, the notebook environment will open in the
 browser.
 
-## Manage Julia conda environment
+## Julia conda environment
+
+### setup `PyCall` to use the julia default conda environment:
+
+```julia
+cd("path\\to\\julia-introduction")
+using Pkg; Pkg.activate(".")
+ENV["PYTHON"]=""; using PyCall; Pkg.build("PyCall")
+```
+- Relaunch Julia and check which `Python` is being used by `PyCall`: `PyCall.pyprogramname` or `PyCall.python`
+
+### Manage conda environment
 
 **Option 1**: use [Conda.jl](https://github.com/JuliaPy/Conda.jl) package.
 
